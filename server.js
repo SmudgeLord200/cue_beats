@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const axios = require('axios');
-const { searchQloo, trendsQloo, insightsQloo, seedEntityForStory, getTags, recommendFilmsByTags } = require('./qlooClient');
+const { searchQloo, trendsQloo, insightsQloo, seedEntityForStory, getTags, recommendFilmsByTags, getBroaderMatches, fetchFilmTags, recommendArtistByTags } = require('./qlooClient');
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 3000;
@@ -11,7 +11,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
 });
 
-
+ 
 app.get('/searchQloo', async (req, res) => {
   const q = req.query.q || 'cate-blanchett';
   try {
@@ -47,10 +47,22 @@ app.get('/insightsQloo', async (req, res) => {
 });
 
 app.get('/getTags', async (req, res) => {
-  const logline = req.query.logline || 'career crossroads';
+  const setOfTags = [
+    "female protagonist",
+    "orchestra conductor",
+    "composer as protagonist",
+    "power dynamics",
+    "psychological drama",
+    "commanding presence",
+    "artistic integrity",
+    "emotional intensity",
+    "complex morality",
+    "character study"
+  ];
+
   try {
-    const data = await getTags(logline);
-    res.json(data);
+    const uniqueTags = await fetchUniqueTagsWithPopularity(setOfTags);
+    return res.json(uniqueTags);
   } catch (err) {
     const status = err.response?.status || 500;
     const body = err.response?.data || err.message;
@@ -91,21 +103,16 @@ app.get('/cueBeats', async (req, res) => {
   // LLM provides a set of tags based on the logline and synopsis
   // For example: ['power imbalance', 'artistic integrity', 'personal crisis', '
   const setOfTags = [
-    "renowned conductor",
+    "drama",
     "classical music",
-    "Berlin Philharmonic",
-    "Mahler's Symphony No. 5",
-    "power dynamics",
-    "artistic integrity",
+    "female protagonist",
+    "composer as protagonist",
     "identity crisis",
     "psychological drama",
     "anxiety",
-    "personal betrayal",
-    "professional rivalry",
-    "ambition vs. humanity",
+    "self-destruction",
     "family relationships",
-    "career crossroads",
-    "self-destruction"
+    "professional rivalry"
   ];
 
   try {
@@ -113,12 +120,19 @@ app.get('/cueBeats', async (req, res) => {
     // Example: ['urn:tag:archetype:qloo:betrayal', 'urn:tag:keyword:qloo:psychological_drama', 'urn:tag:keyword:media:classical_music']
     const uniqueTags = await fetchUniqueTagsWithPopularity(setOfTags);
     const tagIds = uniqueTags
-      .slice(2, 6) // Limit to top 5 tags
       .map(t => t.id);
-    console.log('tagIds:', uniqueTags);
-  
-    // const data = await recommendFilmsByTags(test);
-    return res.json(uniqueTags);
+
+    // console.log('tagIds:', uniqueTags);
+    // return res.json(uniqueTags);
+
+    const data = await recommendFilmsByTags(tagIds);
+    return res.json(data);
+    // const broad = await getBroaderMatches(tagIds, 50);
+
+    // const topMatches = await filterByMinTagMatches(broad, tagIds, 5);
+
+    // return res.json(topMatches)
+
   } catch (err) {
     console.error('Error fetching tags:', err);
     return res.status(500).json({ error: 'Failed to fetch tags' });
@@ -130,10 +144,16 @@ app.get('/recommendFilmsByTags', async (req, res) => {
   // LLM provides a set of tags based on the logline and synopsis
   // For example: ['power imbalance', 'artistic integrity', 'personal crisis']
   const tagIds = [
-    'urn:tag:archetype:qloo:betrayal',
-    'urn:tag:keyword:qloo:psychological_drama',
+    'urn:tag:genre:media:drama',
+    'urn:tag:keyword:media:bullying',
     'urn:tag:keyword:media:classical_music',
+    'urn:tag:keyword:media:orchestra',
+    'urn:tag:keyword:media:female_protagonist',
+    'urn:tag:keyword:media:mental_breakdown',
+    'urn:tag:keyword:media:composer_as_protagonist',
+    'urn:tag:keyword:media:female_conductor'
   ];
+
 
   try {
     const data = await recommendFilmsByTags(tagIds);
@@ -146,6 +166,54 @@ app.get('/recommendFilmsByTags', async (req, res) => {
 
 });
 
+app.get('/recommendArtistByTags', async (req, res) => {
+
+  // LLM provides a set of tags based on the character from the logline and synopsis
+//You are a tag‑generation assistant trained on Qloo’s media schema.   Given only a film’s logline and synopsis, return nothing but a JavaScript array of Qloo tag “names” (human‑readable, e.g. "Adventure", "Documentary", "Comedy") that best capture character Lydia Tar from the story. The tags should be just the genre of the film. urn:tag:genre: Do not output any commentary—just the array literal. 
+  const genreTags = [
+    "drama"
+  ];
+
+  const setOfTags = [
+  "female protagonist",
+  "psychological drama"
+];
+
+  const minAge = 40;
+  const maxAge = 60;
+  const gender = 'female';
+
+  const minDob = birthDate(minAge);
+  const maxDob = birthDate(maxAge);
+
+  try {
+    // Fetch unique tags from Qloo API based on the set of tags
+    // Example: ['urn:tag:archetype:qloo:betrayal', 'urn:tag:keyword:qloo:psychological_drama', 'urn:tag:keyword:media:classical_music']
+    const uniqueTags = await fetchUniqueTagsWithPopularity(setOfTags);
+    const uniqueTagsIds = uniqueTags
+      .map(t => t.id);
+      const uniqueGenreTags = await fetchUniqueTagsWithPopularity(genreTags);
+
+      // Example: ['urn:tag:genre:media:drama'] 
+    // const uniqueGenreTagsIds = uniqueGenreTags
+    //    .filter(tag => tag.id.startsWith('urn:tag:genre:media:'))
+    //    .map(tag => tag.id);
+    const uniqueGenreTagsIds = ['urn:tag:genre:media:drama']
+    const data = await recommendArtistByTags(uniqueGenreTagsIds, uniqueTagsIds, minDob, maxDob, gender);
+    return res.json(data);
+  } catch (err) {
+    const status = err.response?.status || 500;
+    const body = err.response?.data || err.message;
+    return res.status(status).json({ error: body });
+  }
+
+});
+
+function birthDate(age) {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() - age);
+  return d.toISOString().slice(0, 10);  // "YYYY-MM-DD"
+}
 
 function normalize(str) {
   return str.toLowerCase().replace(/[\W_]+/g, ' ').trim();
@@ -179,15 +247,20 @@ async function fetchUniqueTagsWithPopularity(keywords) {
     // find exact equals
     const exact = matched.filter(t => normalize(t.name) === normKw);
 
-   // **only** keep exact matches; if none, skip this keyword entirely
-   if (exact.length === 0) {
-     console.warn(`No exact matches for "${kw}", skipping.`);
-     await new Promise(r => setTimeout(r, 200));
-     continue;
-   }
+    const loose = matched.length
+      ? matched
+      : [tags.reduce((best, t) => t.popularity > best.popularity ? t : best, tags[0])];
 
-   // now pool = exact matches only
-    const pool = exact;
+    //  // **only** keep exact matches; if none, skip this keyword entirely
+    //  if (exact.length === 0) {
+    //    console.warn(`No exact matches for "${kw}", skipping.`);
+    //    await new Promise(r => setTimeout(r, 200));
+    //    continue;
+    //  }
+
+    // now pool = exact matches only
+    // const pool = exact;
+    const pool = loose;
 
     // accumulate popularity
     for (const t of pool) {
@@ -204,6 +277,23 @@ async function fetchUniqueTagsWithPopularity(keywords) {
     .map(([id, { name, popularity }]) => ({ id, name, popularity }))
     .sort((a, b) => b.popularity - a.popularity);
 }
+
+async function filterByMinTagMatches(films, tagIds, minMatches = 5) {
+  const filmIds = films.map(f => f.id);
+  const tagMap = await fetchFilmTags(filmIds);
+
+  return films
+    .map(f => {
+      const matchedCount = (tagMap[f.id] || [])
+        .filter(t => tagIds.includes(t))
+        .length;
+      return { ...f, matchedCount };
+    })
+    .filter(f => f.matchedCount >= minMatches)
+    // optionally sort by matchedCount desc (then affinity score)
+    .sort((a, b) => b.matchedCount - a.matchedCount || b.score - a.score);
+}
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
