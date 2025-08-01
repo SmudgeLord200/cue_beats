@@ -11,7 +11,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
 });
 
- 
+
 app.get('/searchQloo', async (req, res) => {
   const q = req.query.q || 'cate-blanchett';
   try {
@@ -94,7 +94,7 @@ app.get('/seedEntityForStory', async (req, res) => {
   }
 });
 
-app.get('/cueBeats', async (req, res) => {
+app.get('/deprecatedCueBeats', async (req, res) => {
   const logline = 'A renowned conductor at the height of her career faces internal struggles and external pressures, challenging her grip on reality, power, and artistic integrity.';
   const synopsis = 'TÁR follows the story of Lydia Tár, a celebrated classical music conductor and composer known globally for her musical brilliance and influential career. As Lydia prepares for a milestone live recording of Mahler’s Symphony No. 5 with the Berlin Philharmonic, she begins to confront mounting tensions within her personal and professional worlds. Haunted by unresolved relationships, unspoken rivalries, and internal battles with anxiety, Lydia struggles to maintain control over her meticulously curated life. Throughout the narrative, Lydia faces accusations, personal betrayals, and the resurfacing of past indiscretions, causing her carefully constructed world to slowly unravel. Her interactions with colleagues, students, her assistant Francesca, and her family, especially her partner Sharon and daughter Petra, amplify her internal crisis, ultimately questioning the balance between ambition and humanity, genius and morality. The film delves into the psychological complexity of an artist who simultaneously inspires awe and controversy, probing the intense demands of artistry, power dynamics, identity, and self-destruction.'
 
@@ -169,22 +169,31 @@ app.get('/recommendFilmsByTags', async (req, res) => {
 app.get('/recommendArtistByTags', async (req, res) => {
 
   // LLM provides a set of tags based on the character from the logline and synopsis
-//You are a tag‑generation assistant trained on Qloo’s media schema.   Given only a film’s logline and synopsis, return nothing but a JavaScript array of Qloo tag “names” (human‑readable, e.g. "Adventure", "Documentary", "Comedy") that best capture character Lydia Tar from the story. The tags should be just the genre of the film. urn:tag:genre: Do not output any commentary—just the array literal. 
+  //You are a tag‑generation assistant trained on Qloo’s media schema.   
+  // Given only a film’s logline and synopsis, return nothing but a JavaScript array of Qloo tag “names” (human‑readable, e.g. "Adventure", "Documentary", "Comedy") that best capture character Lydia Tar from the story. 
+  // The tags should be just the genre of the film.  Do not output any commentary—just the array literal. 
   const genreTags = [
     "drama"
   ];
 
+  // LLM provides a set of tags based on the character from the logline and synopsis
+  //You are a tag‑generation assistant trained on Qloo’s media schema.   
+  // Given only a film’s logline and synopsis, return nothing but a JavaScript array of Qloo tag “names” (human‑readable, e.g. "Adventure", "Documentary", "Comedy") that best capture character Lydia Tar from the story. 
+  // The tags should be just the characteristic of the character.  Do not output any commentary—just the array literal. 
+
   const setOfTags = [
-  "female protagonist",
-  "psychological drama"
-];
+    "female protagonist",
+    "psychological drama"
+  ];
+
+  const combineTags = [...new Set([...genreTags, ...setOfTags])];
 
   const minAge = 40;
   const maxAge = 60;
   const gender = 'female';
 
-  const minDob = birthDate(minAge);
-  const maxDob = birthDate(maxAge);
+  const earliest = birthDate(maxAge); // Oldest: 1965-07-01
+  const latest = birthDate(minAge); // Youngest: 1985-07-31
 
   try {
     // Fetch unique tags from Qloo API based on the set of tags
@@ -192,14 +201,25 @@ app.get('/recommendArtistByTags', async (req, res) => {
     const uniqueTags = await fetchUniqueTagsWithPopularity(setOfTags);
     const uniqueTagsIds = uniqueTags
       .map(t => t.id);
-      const uniqueGenreTags = await fetchUniqueTagsWithPopularity(genreTags);
+    const uniqueGenreTags = await fetchUniqueTagsWithPopularity(genreTags);
 
-      // Example: ['urn:tag:genre:media:drama'] 
-    // const uniqueGenreTagsIds = uniqueGenreTags
-    //    .filter(tag => tag.id.startsWith('urn:tag:genre:media:'))
-    //    .map(tag => tag.id);
-    const uniqueGenreTagsIds = ['urn:tag:genre:media:drama']
-    const data = await recommendArtistByTags(uniqueGenreTagsIds, uniqueTagsIds, minDob, maxDob, gender);
+    // Example: ['urn:tag:genre:media:drama'] 
+    const uniqueGenreTagsIds = uniqueGenreTags
+      .filter(tag => tag.id.startsWith('urn:tag:genre:media:'))
+      .map(tag => tag.id);
+    // const uniqueGenreTagsIds = ['urn:tag:genre:media:drama']
+    const data = await recommendArtistByTags(
+      uniqueGenreTagsIds,
+      uniqueTagsIds,
+      earliest,
+      latest,
+      gender
+    );
+    console.log('uniqueGenreTagsIds:', uniqueGenreTagsIds);
+    console.log('uniqueTagsIds:', uniqueTagsIds);
+    console.log('EARLIEST:', earliest);
+    console.log('LATEST:', latest);
+    console.log('gender:', gender);
     return res.json(data);
   } catch (err) {
     const status = err.response?.status || 500;
@@ -293,6 +313,58 @@ async function filterByMinTagMatches(films, tagIds, minMatches = 5) {
     // optionally sort by matchedCount desc (then affinity score)
     .sort((a, b) => b.matchedCount - a.matchedCount || b.score - a.score);
 }
+
+app.get('/CueBeats', async (req, res) => {
+  try {
+    // LLM provides a set of json data based on the script/story.
+    const data = require('./example-results-llm.json');
+
+    const storyGenre = data.genre;
+
+    const characters = data.characters;
+
+    const storyGenreTags = await fetchUniqueTagsWithPopularity(storyGenre);
+    const storyGenreTagsIds = storyGenreTags
+      .filter(tag => tag.id.startsWith('urn:tag:genre:media:'))
+      .map(tag => tag.id);
+
+    const qlooCastingRecommendationslist = [];
+
+    for (const character of characters) {
+      const characteristic = character.tags;
+      const minAge = character.minAge;
+      const maxAge = character.maxAge;
+      const gender = character.gender;
+
+      const earliestDOB = birthDate(maxAge);
+      const latestDOB = birthDate(minAge);
+
+      const characteristicTags = await fetchUniqueTagsWithPopularity(characteristic);
+      const characteristicTagsIds = characteristicTags
+        .map(t => t.id);
+
+      const qlooCastingRecommendations = await recommendArtistByTags(
+        storyGenreTagsIds,
+        characteristicTagsIds,
+        earliestDOB,
+        latestDOB,
+        gender,
+        take = 3
+      )
+      qlooCastingRecommendationslist.push({
+        character_name: character.name,
+        casting: qlooCastingRecommendations
+      });
+    }
+
+    res.json(qlooCastingRecommendationslist);
+
+  } catch (err) {
+    const status = err.response?.status || 500;
+    const body = err.response?.data || err.message;
+    res.status(status).json({ error: body });
+  }
+});
 
 
 app.listen(PORT, () => {

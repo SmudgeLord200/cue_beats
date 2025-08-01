@@ -1,0 +1,93 @@
+{
+  "genre": ["drama", "psychological drama"],
+  "characters": [
+    {
+      "name": "Lydia Tár",
+      "description": "A world-renowned classical conductor and composer whose brilliance is undermined by growing anxieties, betrayals, and the weight of her own ambition.",
+      "gender": "female",
+      "minAge": 45,
+      "maxAge": 55,
+      "tags": ["power dynamics", "identity crisis", "artistic integrity"]
+    },
+    {
+      "name": "Francesca Lentini",
+      "description": "Lydia’s loyal assistant—efficient, young, and perceptive—who balances reverence for her mentor with growing unease at Lydia’s extremes.",
+      "gender": "female",
+      "minAge": 30,
+      "maxAge": 35,
+      "tags": ["supportive partner", "ambitious assistant", "quiet strength"]
+    },
+    {
+      "name": "Adam Gopnik",
+      "description": "A thoughtful New Yorker writer who conducts the on-stage interview, offering Lydia both praise and pointed questions.",
+      "gender": "male",
+      "minAge": 45,
+      "maxAge": 55,
+      "tags": ["interviewer", "cerebral", "provocative"]
+    },
+    {
+      "name": "Eliot Kaplan",
+      "description": "A well-connected patron whose mix of flattery and self-interest tests Lydia’s patience and integrity.",
+      "gender": "male",
+      "minAge": 45,
+      "maxAge": 55,
+      "tags": ["patronage", "self-interest", "financial power"]
+    },
+    {
+      "name": "Sharon Goodnow",
+      "description": "Lydia’s partner and fellow musician, whose calm support masks her own worries about family and Lydia’s unraveling.",
+      "gender": "female",
+      "minAge": 35,
+      "maxAge": 50,
+      "tags": ["supportive partner", "grounded", "emotional anchor"]
+    },
+    {
+      "name": "Petra",
+      "description": "Lydia and Sharon’s six-year-old adopted daughter, caught between her parents’ brilliance and their growing tensions.",
+      "gender": "female",
+      "minAge": 6,
+      "maxAge": 8,
+      "tags": ["innocent witness", "vulnerable", "observant"]
+    },
+    {
+      "name": "Max",
+      "description": "A young Juilliard conductor student whose idealism is challenged by Lydia’s uncompromising standards.",
+      "gender": "male",
+      "minAge": 20,
+      "maxAge": 28,
+      "tags": ["aspiring artist", "idealistic", "eager"]
+    },
+    {
+      "name": "Olive Kerr",
+      "description": "A conducting student chosen for critique, representing the next generation of musicians grappling with artistic intent.",
+      "gender": "female",
+      "minAge": 20,
+      "maxAge": 28,
+      "tags": ["analytical", "creative", "earnest"]
+    },
+    {
+      "name": "Sebastian Brix",
+      "description": "Lydia’s longtime assistant conductor whose traditionalist approach both comforts and frustrates her.",
+      "gender": "male",
+      "minAge": 65,
+      "maxAge": 75,
+      "tags": ["traditionalist", "reliable", "steadfast"]
+    },
+    {
+      "name": "Andris Davis",
+      "description": "Lydia’s venerable predecessor in Berlin—a mentor-figure whose praise once shaped her career.",
+      "gender": "male",
+      "minAge": 75,
+      "maxAge": 85,
+      "tags": ["mentor", "old-guard", "respected"]
+    },
+    {
+      "name": "Johanna",
+      "description": "Petra’s schoolmate whose bullying provokes Lydia’s fierce, protective side.",
+      "gender": "female",
+      "minAge": 8,
+      "maxAge": 10,
+      "tags": ["antagonist", "peer pressure"]
+    }
+  ]
+}
