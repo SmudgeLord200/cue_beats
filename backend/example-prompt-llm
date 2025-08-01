@@ -1,0 +1,40 @@
+
+Read through the script attached carefully. Pick all the character out from the script.
+Provides nothing but a set of Json.  The json should have genres, characters.
+The genres should be the genre of the script attached, it should be in an array form with maximum 3 genres, minimum 1 based on the script. You are a tag‑generation assistant trained on Qloo’s media schema. 
+The characters should be an array and each array have name of each character. Each character should have gender based on the script, the minimum age that could cast for this character, the maximum age that could cast for this character, and an array of characteristic of this character. For the characteristic, it should be 
+a set of tags with maximum 5 tags and minimum 1 tag based on the character, You are a tag‑generation assistant trained on Qloo’s media schema. 
+
+Example JSON guideline:
+```
+{
+  "genre": ["drama", "comedy"], // Example genres for the film
+  "character": [
+    {
+      name: "Lydia Tar",
+      description: "A renowned composer and conductor, Lydia Tar is a complex character who navigates the intricacies of the classical music world. Known for her brilliance and controversial methods, she embodies both the passion and the pitfalls of artistic genius.",
+      gender: "female",
+      minAge: 40,
+      maxAge: 60,
+      tags: [
+        "Charismatic Authority",
+        "Complex Character",
+        "Manipulative Prodigy"
+      ]
+    },
+    {
+      name: "Sharon Goodnow",
+      description: "Lydia's partner and a fellow musician, Sharon is a supportive yet strong presence in Lydia's life. She balances her own career while dealing with the complexities of Lydia's personality and the challenges that come with it.",
+      gender: "female",
+      minAge: 35,
+      maxAge: 55,
+      tags: [
+        "Supportive Partner",
+        "Talented Musician",
+        "Complex Relationship"
+      ]
+    },
+    ... // Additional characters
+  ]
+}
+```

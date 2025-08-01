@@ -1,0 +1,632 @@
+[
+  {
+    "character_name": "Lydia Tár",
+    "casting": [
+      {
+        "id": "9ED79306-67ED-4B9E-88F1-454A6E3DB53E",
+        "name": "Penélope Cruz",
+        "citizenship": [
+          "Spain"
+        ],
+        "date_of_birth": "1974-04-28",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.974032680662311,
+        "image": {
+          "url": "https://images.qloo.com/i/9ED79306-67ED-4B9E-88F1-454A6E3DB53E-420x-auto.jpg"
+        },
+        "imdb_id": "nm0004851",
+        "short_description": "Spanish actress",
+        "nominated_for": [
+          "Goya Award for Best Actress",
+          "Medal of the Circle of Cinematographic Writers for the best actress",
+          "European Film Award – People's Choice Award for Best European Film",
+          "European Film Award for Best Actress",
+          "Forqué Award for the best female performance",
+          "Premio Feroz for Best Main Actress",
+          "Academy Award for Best Actress",
+          "Jameson People's Choice Award for Best Actress",
+          "Academy Award for Best Supporting Actress"
+        ],
+        "affinity": 0.991203012515367
+      },
+      {
+        "id": "85337542-9DF4-427E-B5C8-218FDF2F2549",
+        "name": "Samantha Morton",
+        "citizenship": [
+          "United Kingdom"
+        ],
+        "date_of_birth": "1977-05-13",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.705270653721964,
+        "image": {
+          "url": "https://images.qloo.com/i/85337542-9DF4-427E-B5C8-218FDF2F2549-420x-auto.jpg"
+        },
+        "imdb_id": "nm0608090",
+        "short_description": "English actress and director",
+        "nominated_for": [
+          "European Film Award for Best Actress",
+          "Academy Award for Best Actress",
+          "Jameson People's Choice Award for Best Actress",
+          "Academy Award for Best Supporting Actress"
+        ],
+        "affinity": 0.990476399940998
+      },
+      {
+        "id": "901AE67E-2D54-4D24-8877-3C7C6B124FEE",
+        "name": "Ludivine Sagnier",
+        "citizenship": [
+          "France"
+        ],
+        "date_of_birth": "1979-07-03",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.560914754134006,
+        "image": {
+          "url": "https://images.qloo.com/i/901AE67E-2D54-4D24-8877-3C7C6B124FEE-420x-auto.jpg"
+        },
+        "imdb_id": "nm0756203",
+        "short_description": "French actress",
+        "nominated_for": [
+          "European Film Award for Best Actress",
+          "Jameson People's Choice Award for Best Actress"
+        ],
+        "affinity": 0.989678427810361
+      }
+    ]
+  },
+  {
+    "character_name": "Francesca Lentini",
+    "casting": [
+      {
+        "id": "5951FDE4-FBF4-4DF5-9A00-73687B66592B",
+        "name": "Cierra Ramirez",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1995-03-09",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.946956436655396,
+        "image": {
+          "url": "https://images.qloo.com/i/5951FDE4-FBF4-4DF5-9A00-73687B66592B-420x-auto.jpg"
+        },
+        "imdb_id": "nm2028116",
+        "short_description": "American actress and singer (born 1995)",
+        "affinity": 0.947978039314271
+      },
+      {
+        "id": "8C62438F-3C79-4659-A93E-A4F0195CE881",
+        "name": "Anna Maria Perez de Tagle",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1990-12-23",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.835128994031376,
+        "image": {
+          "url": "https://images.qloo.com/i/8C62438F-3C79-4659-A93E-A4F0195CE881-420x-auto.jpg"
+        },
+        "imdb_id": "nm2189680",
+        "short_description": "American actress, singer and model",
+        "affinity": 0.947132575129056
+      },
+      {
+        "id": "B6207976-3572-4047-AEB8-3B91C309B94D",
+        "name": "Nicole Anderson",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1990-08-29",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.853284917537318,
+        "image": {
+          "url": "https://images.qloo.com/i/B6207976-3572-4047-AEB8-3B91C309B94D-420x-auto.jpg"
+        },
+        "imdb_id": "nm2348808",
+        "short_description": "American actress",
+        "affinity": 0.945979080580234
+      }
+    ]
+  },
+  {
+    "character_name": "Adam Gopnik",
+    "casting": [
+      {
+        "id": "4E495AEB-3938-4A4E-B205-95DB9D43B130",
+        "name": "Jared Leto",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1971-12-26",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.991286243898196,
+        "image": {
+          "url": "https://images.qloo.com/i/4E495AEB-3938-4A4E-B205-95DB9D43B130-420x-auto.jpg"
+        },
+        "imdb_id": "nm0001467",
+        "short_description": "American actor and singer",
+        "nominated_for": [
+          "Academy Award for Best Supporting Actor"
+        ],
+        "affinity": 0.977927244775663
+      },
+      {
+        "id": "5EAFDAF6-1E38-4278-BB57-9D82F2B32780",
+        "name": "Adrien Brody",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1973-04-14",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.895853491481937,
+        "image": {
+          "url": "https://images.qloo.com/i/5EAFDAF6-1E38-4278-BB57-9D82F2B32780-420x-auto.jpg"
+        },
+        "imdb_id": "nm0004778",
+        "short_description": "American actor",
+        "nominated_for": [
+          "Jameson People's Choice Award for Best Actor",
+          "Screen Actors Guild Award for Outstanding Performance by a Male Actor in a Leading Role",
+          "Polish Academy Award for Best Actor",
+          "Golden Globe Award for Best Actor – Motion Picture Drama",
+          "BAFTA Award for Best Actor in a Leading Role",
+          "César Award for Best Actor",
+          "Independent Spirit Award for Best Male Lead",
+          "Academy Award for Best Actor",
+          "Screen Actors Guild Award for Outstanding Performance by a Cast in a Motion Picture",
+          "Black Reel Award for Best Ensemble",
+          "National Society of Film Critics Award for Best Actor"
+        ],
+        "affinity": 0.976953134401167
+      },
+      {
+        "id": "26B93058-1D4E-414B-A88B-2523943D2634",
+        "name": "Sacha Baron Cohen",
+        "citizenship": [
+          "United Kingdom"
+        ],
+        "date_of_birth": "1971-10-13",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.92208717017645,
+        "image": {
+          "url": "https://images.qloo.com/i/26B93058-1D4E-414B-A88B-2523943D2634-420x-auto.jpg"
+        },
+        "imdb_id": "nm0056187",
+        "short_description": "English actor, comedian, producer and writer",
+        "nominated_for": [
+          "Academy Award for Best Supporting Actor",
+          "Academy Award for Best Writing, Adapted Screenplay"
+        ],
+        "affinity": 0.976479249898179
+      }
+    ]
+  },
+  {
+    "character_name": "Eliot Kaplan",
+    "casting": [
+      {
+        "id": "CBC90B96-4C22-417C-A059-BECB48891EBE",
+        "name": "Lyova Bi-2",
+        "citizenship": [
+          "Soviet Union",
+          "Israel"
+        ],
+        "date_of_birth": "1972-09-02",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.809161674693687,
+        "image": {
+          "url": "https://images.qloo.com/i/CBC90B96-4C22-417C-A059-BECB48891EBE-420x-auto.jpg"
+        },
+        "imdb_id": "nm2867882",
+        "short_description": "Russian rock musician of Belarusian background",
+        "affinity": 0.994502501918568
+      },
+      {
+        "id": "73CDD475-FAFD-40EC-9A3B-4AA43CF2CB19",
+        "name": "Daniel Brühl",
+        "citizenship": [
+          "Germany",
+          "Spain"
+        ],
+        "date_of_birth": "1978-06-16",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.878317261173503,
+        "image": {
+          "url": "https://images.qloo.com/i/73CDD475-FAFD-40EC-9A3B-4AA43CF2CB19-420x-auto.jpg"
+        },
+        "imdb_id": "nm0117709",
+        "short_description": "German actor",
+        "nominated_for": [
+          "Jameson People's Choice Award for Best Actor",
+          "European Film Award for Best Actor"
+        ],
+        "affinity": 0.989867375392525
+      },
+      {
+        "id": "660183F0-73F1-411D-912D-920B2BD4F85C",
+        "name": "Okan Yalabık",
+        "citizenship": [
+          "Turkey"
+        ],
+        "date_of_birth": "1978-12-13",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.764907970124265,
+        "imdb_id": "nm1204652",
+        "short_description": "Turkish actor",
+        "affinity": 0.989157779095566
+      }
+    ]
+  },
+  {
+    "character_name": "Sharon Goodnow",
+    "casting": [
+      {
+        "id": "002BFE04-8F50-4F0B-92FA-E8438135FCE7",
+        "name": "Sienna Miller",
+        "citizenship": [
+          "United States of America",
+          "United Kingdom"
+        ],
+        "date_of_birth": "1981-12-28",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.584745762711864,
+        "image": {
+          "url": "https://images.qloo.com/i/002BFE04-8F50-4F0B-92FA-E8438135FCE7-420x-auto.jpg"
+        },
+        "imdb_id": "nm1092227",
+        "short_description": "British-American actress",
+        "affinity": 0.954783208392913
+      },
+      {
+        "id": "10922EB0-E23A-43EC-AC85-3E7CEDBE7AF2",
+        "name": "Juno Temple",
+        "citizenship": [
+          "United Kingdom"
+        ],
+        "date_of_birth": "1989-07-21",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.777127885106707,
+        "image": {
+          "url": "https://images.qloo.com/i/10922EB0-E23A-43EC-AC85-3E7CEDBE7AF2-420x-auto.jpg"
+        },
+        "imdb_id": "nm1017334",
+        "short_description": "British actress",
+        "affinity": 0.953408080935439
+      },
+      {
+        "id": "8DCB883B-EEDC-484F-AF20-2D682D01B094",
+        "name": "Sarah Snook",
+        "citizenship": [
+          "Australia"
+        ],
+        "date_of_birth": "1987-12-01",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.700285928615692,
+        "image": {
+          "url": "https://images.qloo.com/i/8DCB883B-EEDC-484F-AF20-2D682D01B094-420x-auto.jpg"
+        },
+        "imdb_id": "nm3512758",
+        "short_description": "Australian actress (born 1987)",
+        "affinity": 0.951169125049503
+      }
+    ]
+  },
+  {
+    "character_name": "Petra",
+    "casting": []
+  },
+  {
+    "character_name": "Max",
+    "casting": [
+      {
+        "id": "0A5D39C2-5DF2-4E35-8DDA-79FAD6E078C0",
+        "name": "Robert Capron",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1998-07-09",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.482904078016112,
+        "image": {
+          "url": "https://images.qloo.com/i/0A5D39C2-5DF2-4E35-8DDA-79FAD6E078C0-420x-auto.jpg"
+        },
+        "imdb_id": "nm2953573",
+        "short_description": "American actor, comedian and filmmaker",
+        "affinity": 0.905788350969278
+      },
+      {
+        "id": "65E4DC37-C027-413E-BCD3-F6A473A07C2C",
+        "name": "Alex Wolff",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1997-11-01",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.864260010219502,
+        "image": {
+          "url": "https://images.qloo.com/i/65E4DC37-C027-413E-BCD3-F6A473A07C2C-420x-auto.jpg"
+        },
+        "imdb_id": "nm1842974",
+        "short_description": "American actor, singer, writer",
+        "affinity": 0.900549014533451
+      },
+      {
+        "id": "3A6D1EB2-1972-4E0C-A26C-2233FAD34970",
+        "name": "Noah Jupe",
+        "citizenship": [
+          "United Kingdom"
+        ],
+        "date_of_birth": "2005-02-25",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.75196507974473,
+        "image": {
+          "url": "https://images.qloo.com/i/3A6D1EB2-1972-4E0C-A26C-2233FAD34970-420x-auto.jpg"
+        },
+        "imdb_id": "nm7415871",
+        "short_description": "English actor",
+        "affinity": 0.889215617208034
+      }
+    ]
+  },
+  {
+    "character_name": "Olive Kerr",
+    "casting": [
+      {
+        "id": "C544A1A5-ACAA-44B5-B2A5-35A852BDEE29",
+        "name": "Kara Hayward",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1998-11-17",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.474935040932367,
+        "image": {
+          "url": "https://images.qloo.com/i/C544A1A5-ACAA-44B5-B2A5-35A852BDEE29-420x-auto.jpg"
+        },
+        "imdb_id": "nm4442319",
+        "short_description": "American actress",
+        "affinity": 0.901940914169797
+      },
+      {
+        "id": "11E30CE3-8CD9-47EC-A71B-09DDE3E75807",
+        "name": "Elle Fanning",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1998-04-09",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.957328143855796,
+        "image": {
+          "url": "https://images.qloo.com/i/11E30CE3-8CD9-47EC-A71B-09DDE3E75807-420x-auto.jpg"
+        },
+        "imdb_id": "nm1102577",
+        "short_description": "American actress",
+        "affinity": 0.882383345444266
+      },
+      {
+        "id": "3F2F4E1E-8A38-4090-A857-03C53CA125E7",
+        "name": "Thomasin McKenzie",
+        "citizenship": [
+          "New Zealand"
+        ],
+        "date_of_birth": "2000-07-26",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.364950370185147,
+        "image": {
+          "url": "https://images.qloo.com/i/3F2F4E1E-8A38-4090-A857-03C53CA125E7-420x-auto.jpg"
+        },
+        "imdb_id": "nm5057169",
+        "short_description": "New Zealand actress",
+        "affinity": 0.872619431669772
+      }
+    ]
+  },
+  {
+    "character_name": "Sebastian Brix",
+    "casting": [
+      {
+        "id": "B9513B28-1848-4808-B114-AAC9A811AAF0",
+        "name": "John Travolta",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1954-02-18",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.869429556103978,
+        "image": {
+          "url": "https://images.qloo.com/i/B9513B28-1848-4808-B114-AAC9A811AAF0-420x-auto.jpg"
+        },
+        "imdb_id": "nm0000237",
+        "short_description": "American actor (born 1954)",
+        "nominated_for": [
+          "Golden Raspberry Award for Worst Actor",
+          "Golden Raspberry Award for Worst Supporting Actor",
+          "Academy Award for Best Actor"
+        ],
+        "affinity": 0.981883636163612
+      },
+      {
+        "id": "ED08B5E8-20AD-4E27-BF5A-8C0D39280879",
+        "name": "Ray Liotta",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1954-12-18",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.753204466139746,
+        "image": {
+          "url": "https://images.qloo.com/i/ED08B5E8-20AD-4E27-BF5A-8C0D39280879-420x-auto.jpg"
+        },
+        "imdb_id": "nm0000501",
+        "short_description": "American actor (1954–2022)",
+        "affinity": 0.978062101717159
+      },
+      {
+        "id": "91652FEF-494F-441B-8F6B-0FF680B80017",
+        "name": "Luis Guzmán",
+        "citizenship": [
+          "Puerto Rico"
+        ],
+        "date_of_birth": "1956-08-28",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.696192691968994,
+        "image": {
+          "url": "https://images.qloo.com/i/91652FEF-494F-441B-8F6B-0FF680B80017-420x-auto.jpg"
+        },
+        "imdb_id": "nm0350079",
+        "short_description": "Puerto Rican actor",
+        "affinity": 0.977893662978995
+      }
+    ]
+  },
+  {
+    "character_name": "Andris Davis",
+    "casting": [
+      {
+        "id": "DDD12DDE-5734-4D74-8590-B69778ADBB4E",
+        "name": "Jeff Bridges",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1949-12-04",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.817130711777432,
+        "image": {
+          "url": "https://images.qloo.com/i/DDD12DDE-5734-4D74-8590-B69778ADBB4E-420x-auto.jpg"
+        },
+        "imdb_id": "nm0000313",
+        "short_description": "American actor",
+        "nominated_for": [
+          "Golden Globe Award for Best Actor – Television Series Drama",
+          "Academy Award for Best Supporting Actor",
+          "Teen Choice Award for Best Villain",
+          "Academy Award for Best Actor"
+        ],
+        "affinity": 0.95476317623427
+      },
+      {
+        "id": "55CBB620-41F6-4409-AB48-199FE82E389E",
+        "name": "Joe Morton",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1947-10-18",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.619361607288462,
+        "image": {
+          "url": "https://images.qloo.com/i/55CBB620-41F6-4409-AB48-199FE82E389E-420x-auto.jpg"
+        },
+        "imdb_id": "nm0608012",
+        "short_description": "American actor",
+        "nominated_for": [
+          "Tony Award for Best Actor in a Musical"
+        ],
+        "affinity": 0.954024983914907
+      },
+      {
+        "id": "52B7FBA6-C6BD-4A67-95A3-0EC2FF556535",
+        "name": "William Hurt",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "1950-03-20",
+        "gender": [
+          "male"
+        ],
+        "popularity": 0.271490851371479,
+        "image": {
+          "url": "https://images.qloo.com/i/52B7FBA6-C6BD-4A67-95A3-0EC2FF556535-420x-auto.jpg"
+        },
+        "imdb_id": "nm0000458",
+        "short_description": "American actor (1950–2022)",
+        "nominated_for": [
+          "Tony Award for Best Featured Actor in a Play",
+          "Academy Award for Best Supporting Actor",
+          "Genie Award for Best Supporting Actor",
+          "Golden Globe Award for Best Actor – Motion Picture Drama",
+          "BAFTA Award for Best Actor in a Leading Role",
+          "Golden Globe Award for New Star of the Year – Actor",
+          "Golden Globe Award for Best Actor – Motion Picture Musical or Comedy",
+          "Primetime Emmy Award for Outstanding Lead Actor in a Miniseries or a Movie",
+          "National Society of Film Critics Award for Best Actor",
+          "Primetime Emmy Award for Outstanding Supporting Actor in a Drama Series",
+          "Satellite Award for Best Supporting Actor – Series, Miniseries or Television Film",
+          "Academy Award for Best Actor",
+          "David di Donatello for Best Foreign Actor",
+          "Screen Actors Guild Award for Outstanding Performance by a Cast in a Motion Picture"
+        ],
+        "affinity": 0.950573253826998
+      }
+    ]
+  },
+  {
+    "character_name": "Johanna",
+    "casting": [
+      {
+        "id": "0797850D-6B02-4BD4-B497-17945CF3D264",
+        "name": "Taytum and Oakley Fisher",
+        "citizenship": [
+          "United States of America"
+        ],
+        "date_of_birth": "2016-06-23",
+        "gender": [
+          "female"
+        ],
+        "popularity": 0.970885291527598,
+        "imdb_id": "",
+        "short_description": "American kids influencers and actresses",
+        "affinity": 0.796420563061018
+      }
+    ]
+  }
+]

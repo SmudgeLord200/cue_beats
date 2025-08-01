@@ -2,10 +2,10 @@ require("dotenv").config();
 
 const express = require("express");
 const axios = require("axios");
-const { searchQloo } = require("./qlooClient");
+const { qlooRecommendation, qlooTags } = require("./qlooClient");
 const app = express();
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -13,12 +13,12 @@ app.get("/health", (req, res) => {
   res.json({ status: "OK" });
 });
 
-if (!GEMINI_API_KEY) {
-  console.error("Error: GEMINI_API_KEY environment variable is not set.");
-  process.exit(1); // Exit if API key is missing
-}
+// if (!GEMINI_API_KEY) {
+//   console.error("Error: GEMINI_API_KEY environment variable is not set.");
+//   process.exit(1); // Exit if API key is missing
+// }
 
-const ai = new GoogleGenerativeAI(GEMINI_API_KEY);
+// const ai = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 // File upload endpoint
 app.post("/file-upload", async (req, res) => {
@@ -138,17 +138,114 @@ app.post("/secondary-updates", async (req, res) => {
   }
 });
 
-app.get("/cate-blanchett", async (req, res) => {
-  const q = req.query.q || "cate-blanchett";
+app.get('/qloo-recommendation', async (req, res) => {
   try {
-    const data = await searchQloo(q);
-    res.json(data);
+    // LLM provides a set of json data based on the script/story.
+    const data = require('./example-results-llm.json');
+
+    const storyGenre = data.genre;
+
+    const characters = data.characters;
+
+    const storyGenreTags = await fetchUniqueTagsWithPopularity(storyGenre);
+    const storyGenreTagsIds = storyGenreTags
+      .filter(tag => tag.id.startsWith('urn:tag:genre:media:'))
+      .map(tag => tag.id);
+
+    const qlooCastingRecommendationlist = [];
+
+    for (const character of characters) {
+      const characteristic = character.tags;
+      const minAge = character.minAge;
+      const maxAge = character.maxAge;
+      const gender = character.gender;
+
+      const earliestDOB = birthDate(maxAge);
+      const latestDOB = birthDate(minAge);
+
+      const characteristicTags = await fetchUniqueTagsWithPopularity(characteristic);
+      const characteristicTagsIds = characteristicTags
+        .map(t => t.id);
+
+      const qlooCastingRecommendation = await qlooRecommendation(
+        storyGenreTagsIds,
+        characteristicTagsIds,
+        earliestDOB,
+        latestDOB,
+        gender,
+        take = 3
+      )
+      qlooCastingRecommendationlist.push({
+        character_name: character.name,
+        casting: qlooCastingRecommendation
+      });
+    }
+
+    res.json(qlooCastingRecommendationlist);
+
   } catch (err) {
     const status = err.response?.status || 500;
     const body = err.response?.data || err.message;
     res.status(status).json({ error: body });
   }
 });
+
+function birthDate(age) {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() - age);
+  return d.toISOString().slice(0, 10);  // "YYYY-MM-DD"
+}
+
+function normalize(str) {
+  return str.toLowerCase().replace(/[\W_]+/g, ' ').trim();
+}
+
+async function fetchUniqueTagsWithPopularity(keywords) {
+  const tagMap = {};
+
+  for (const kw of keywords) {
+    let tags;
+    try {
+      tags = await qlooTags(kw);
+    } catch (err) {
+      console.warn(`Error fetching tags for "${kw}": ${err.message}`);
+      continue;
+    }
+    if (!tags.length) {
+      console.warn(`No tags for "${kw}", skipping.`);
+      await new Promise(r => setTimeout(r, 200));
+      continue;
+    }
+
+    const normKw = normalize(kw);
+
+    // find all containing matches
+    const matched = tags.filter(t => {
+      const normName = normalize(t.name);
+      return normName.includes(normKw) || normKw.includes(normName);
+    });
+
+    const loose = matched.length
+      ? matched
+      : [tags.reduce((best, t) => t.popularity > best.popularity ? t : best, tags[0])];
+
+    const pool = loose;
+
+    // accumulate popularity
+    for (const t of pool) {
+      if (!tagMap[t.id]) {
+        tagMap[t.id] = { name: t.name, popularity: 0 };
+      }
+      tagMap[t.id].popularity += t.popularity;
+    }
+
+    await new Promise(r => setTimeout(r, 200));
+  }
+
+  return Object.entries(tagMap)
+    .map(([id, { name, popularity }]) => ({ id, name, popularity }))
+    .sort((a, b) => b.popularity - a.popularity);
+}
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
