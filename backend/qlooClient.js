@@ -55,9 +55,9 @@ async function qlooRecommendation(
   return data.results.entities.map(e => {
     const enDesc = (e.properties.short_descriptions || [])
       .find(desc => desc.language === 'en')?.value;
-  const imdbId = e.external?.imdb_id?.[0]?.id;
+    const imdbId = e.external?.imdb_id?.[0]?.id;
 
-     return {
+    return {
       id: e.entity_id,
       name: e.name,
       citizenship: e.properties.citizenship,
@@ -65,7 +65,7 @@ async function qlooRecommendation(
       gender: e.properties.gender,
       popularity: e.popularity,
       image: e.properties.image,
-      imdb_id:  imdbId || '',
+      imdb_id: imdbId || '',
       short_description: enDesc || '',
       nominated_for: e.properties.nominated_for,
       affinity: e.query.affinity

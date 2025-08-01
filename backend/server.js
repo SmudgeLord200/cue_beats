@@ -5,7 +5,7 @@ const axios = require("axios");
 const { qlooRecommendation, qlooTags } = require("./qlooClient");
 const app = express();
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -13,12 +13,12 @@ app.get("/health", (req, res) => {
   res.json({ status: "OK" });
 });
 
-// if (!GEMINI_API_KEY) {
-//   console.error("Error: GEMINI_API_KEY environment variable is not set.");
-//   process.exit(1); // Exit if API key is missing
-// }
+if (!GEMINI_API_KEY) {
+  console.error("Error: GEMINI_API_KEY environment variable is not set.");
+  process.exit(1); // Exit if API key is missing
+}
 
-// const ai = new GoogleGenerativeAI(GEMINI_API_KEY);
+const ai = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 // File upload endpoint
 app.post("/file-upload", async (req, res) => {
@@ -68,7 +68,7 @@ app.post("/file-upload", async (req, res) => {
             //   type: "ARRAY",
             //   items: { type: "STRING" }, // keyThemes should be an array of strings
             // },
-            keyThemes: {type: "STRING"},
+            keyThemes: { type: "STRING" },
             moodVisualDirection: { type: "STRING" },
             musicSoundtrackDirection: { type: "STRING" },
             soundDesignDirection: { type: "STRING" },
